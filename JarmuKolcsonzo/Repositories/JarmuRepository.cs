@@ -14,7 +14,11 @@ namespace JarmuKolcsonzo.Repositories
         {
         }
 
-        public List<jarmu> GetAll(string search = null)
+        public List<jarmu> GetAll(string search = null, 
+                                  string sortBy = null,
+                                  bool ascending = true,
+                                  int page =1,
+                                  int itemsPerPage = 20)
         {
             var query =_context.jarmu
                 .Include(x => x.tipus).AsQueryable();
@@ -22,8 +26,18 @@ namespace JarmuKolcsonzo.Repositories
             if (!string.IsNullOrWhiteSpace(search))
             {
                 search = search.ToLower();
+
+                //ha a kkresési kulcsszó szám
+                int.TryParse(search, out int dij);
+
+                //Ha dátumra is keresek
+                DateTime.TryParse(search, out DateTime datum);
+
+
                 query = query.Where(x =>
                     x.rendszam.ToLower().Contains(search) ||
+                    x.dij.Equals(dij) ||
+                    x.szerviz_datum.Equals(datum) ||
                     x.tipus.megnevezes.ToLower().Contains(search));
             }
             return query.ToList();

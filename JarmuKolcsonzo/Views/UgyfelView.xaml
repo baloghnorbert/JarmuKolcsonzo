@@ -38,7 +38,7 @@
                 <DataGridTextColumn Header="Város" Binding="{Binding varos}" />
                 <DataGridTextColumn Header="Írányítószám" Binding="{Binding iranyitoszam}" />
                 <DataGridTextColumn Header="Cím" Binding="{Binding cim}" />
-                <DataGridTextColumn Header="Telefon" Binding="{Binding telefon}" />
+                <DataGridTextColumn Header="Telefon" Binding="{Binding telefonszam}" />
                 <DataGridTextColumn Header="E-mail" Binding="{Binding email}" />
                 <DataGridTextColumn Header="Pont" Binding="{Binding pont}" />
             </DataGrid.Columns>
